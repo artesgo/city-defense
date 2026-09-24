@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://mdlmh22u8w5d"]
+
+[ext_resource type="Script" uid="uid://m6adrbqy1sn6" path="res://_characters/rigid_body_3d.gd" id="1_k1hbt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ht50r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k1hbt"]
+
+[node name="RigidChar" type="Node3D" unique_id=51718578]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=912943894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+sleeping = true
+script = ExtResource("1_k1hbt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=53051709]
+mesh = SubResource("CapsuleMesh_ht50r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=395713234]
+shape = SubResource("CapsuleShape3D_k1hbt")
+debug_color = Color(0.9937461, 0, 0.23988995, 0.41960785)

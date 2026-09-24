@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ixm11ui1tj3w"]
+
+[ext_resource type="Script" uid="uid://dk2oqjujy0itw" path="res://_paths/road_builder.gd" id="2_to7xm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4c57u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kek77"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vw27"]
+
+[node name="RoadBuilder" type="Node3D" unique_id=1293868424]
+script = ExtResource("2_to7xm")
+
+[node name="Start" type="MeshInstance3D" parent="." unique_id=1500753663]
+mesh = SubResource("SphereMesh_4c57u")
+
+[node name="Midway" type="MeshInstance3D" parent="." unique_id=1565682102]
+mesh = SubResource("SphereMesh_kek77")
+
+[node name="End" type="MeshInstance3D" parent="." unique_id=918577568]
+mesh = SubResource("SphereMesh_5vw27")

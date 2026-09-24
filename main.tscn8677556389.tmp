@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b32dmp6ra7so2"]
+
+[ext_resource type="Script" uid="uid://yr6xo3remfua" path="res://main.gd" id="1_272bh"]
+[ext_resource type="PackedScene" uid="uid://d14blovffv8v7" path="res://_ui/ui.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cavqfr78xacm4" path="res://camera/camera.tscn" id="3_kek77"]
+[ext_resource type="PackedScene" uid="uid://d0c25edaqw06q" path="res://_paths/road_builder.tscn" id="4_4c57u"]
+[ext_resource type="Script" uid="uid://dlmpqqitu342c" path="res://route_master.gd" id="5_efxa6"]
+[ext_resource type="PackedScene" uid="uid://cchxpyhauf5kp" path="res://_characters/character.tscn" id="6_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dv1oijvx263xi" path="res://_buildings/building.tscn" id="7_ycdy4"]
+[ext_resource type="Script" uid="uid://bhd8qee1qev21" path="res://roads.gd" id="8_5vw27"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8h5yi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8h5yi"]
+
+[node name="Node_Root" type="Node3D" unique_id=1424983793]
+script = ExtResource("1_272bh")
+
+[node name="Ui" parent="." unique_id=1602153190 instance=ExtResource("2_5vw27")]
+
+[node name="CSG_GROUND" type="CSGBox3D" parent="." unique_id=1425259307]
+use_collision = true
+collision_layer = 129
+size = Vector3(4000, 1, 4000)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2029172236]
+transform = Transform3D(-4.371139e-08, -0.86602545, 0.49999997, 0, 0.49999997, 0.86602545, -1, 3.7855173e-08, -2.1855692e-08, 0, 12, 10)
+
+[node name="TopDownCamera" parent="." unique_id=392642930 instance=ExtResource("3_kek77")]
+
+[node name="RoadBuilder" parent="." unique_id=1293868424 instance=ExtResource("4_4c57u")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=356719259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.349858, 1.0343301, -0.2047236)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1666445035]
+mesh = SubResource("SphereMesh_8h5yi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1086602913]
+shape = SubResource("SphereShape3D_8h5yi")
+
+[node name="PlayerControlledAssets" type="Node3D" parent="." unique_id=1407251452]
+script = ExtResource("5_efxa6")
+
+[node name="Character" parent="PlayerControlledAssets" unique_id=1657632412 instance=ExtResource("6_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6289275, 0, 0)
+
+[node name="BUILDINGS" type="Node3D" parent="PlayerControlledAssets" unique_id=464864795]
+
+[node name="Building" parent="PlayerControlledAssets/BUILDINGS" unique_id=304500698 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Building2" parent="PlayerControlledAssets/BUILDINGS" unique_id=372587118 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Building3" parent="PlayerControlledAssets/BUILDINGS" unique_id=1339812424 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -24)
+
+[node name="Building4" parent="PlayerControlledAssets/BUILDINGS" unique_id=142899639 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -24)
+
+[node name="Building5" parent="PlayerControlledAssets/BUILDINGS" unique_id=443751786 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 16)
+
+[node name="Building6" parent="PlayerControlledAssets/BUILDINGS" unique_id=956977797 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
+
+[node name="Building7" parent="PlayerControlledAssets/BUILDINGS" unique_id=735464965 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="Building8" parent="PlayerControlledAssets/BUILDINGS" unique_id=1788659679 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Building9" parent="PlayerControlledAssets/BUILDINGS" unique_id=2011263629 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="ROADS" type="Node3D" parent="PlayerControlledAssets" unique_id=1587435382]
+script = ExtResource("8_5vw27")
+
+[connection signal="menu_open" from="." to="RoadBuilder" method="_on_node_root_menu_open"]
+[connection signal="construct_road" from="RoadBuilder" to="PlayerControlledAssets/ROADS" method="_on_road_builder_construct_road"]

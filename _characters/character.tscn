@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cchxpyhauf5kp"]
+
+[ext_resource type="Script" uid="uid://dcdnkmx4d07ev" path="res://_characters/character_body_3d.gd" id="1_n1n33"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8h5yi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8h5yi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8h5yi"]
+size = Vector3(0.1105957, 0.1953125, 2.5979004)
+
+[node name="Character" type="Node3D" unique_id=1657632412]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=274141794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_n1n33")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=881440862]
+shape = SubResource("CapsuleShape3D_8h5yi")
+debug_color = Color(0.9937461, 0, 0.23988995, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=212878721]
+mesh = SubResource("CapsuleMesh_8h5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/MeshInstance3D" unique_id=665329174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17199707, 0.47509408, -1.702159)
+mesh = SubResource("BoxMesh_8h5yi")
+
+[node name="Rays" type="Node3D" parent="CharacterBody3D" unique_id=853528368]
+
+[node name="Left" type="RayCast3D" parent="CharacterBody3D/Rays" unique_id=861936588]
+transform = Transform3D(0.8660254, 0.5, -2.1855694e-08, 0, -4.371139e-08, -1, -0.5, 0.8660254, -3.7855173e-08, 0, 0.5, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 2
+
+[node name="Forward" type="RayCast3D" parent="CharacterBody3D/Rays" unique_id=1184291715]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 2
+
+[node name="Right" type="RayCast3D" parent="CharacterBody3D/Rays" unique_id=1866676156]
+transform = Transform3D(0.8660254, -0.5, 2.1855694e-08, 0, -4.371139e-08, -1, 0.5, 0.8660254, -3.7855173e-08, 0, 0.5, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 2

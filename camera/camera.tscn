@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cavqfr78xacm4"]
+
+[ext_resource type="Script" uid="uid://5tt677cubykb" path="res://camera/camera_body.gd" id="1_gsf7k"]
+[ext_resource type="Script" uid="uid://ddn4ix7osmxqj" path="res://camera/camera_zoom.gd" id="2_qqjab"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p6dlx"]
+
+[node name="TopDownCamera" type="Node3D" unique_id=392642930]
+
+[node name="CameraBody" type="CharacterBody3D" parent="." unique_id=1488489539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9954593, 6.504446)
+disable_mode = 1
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_gsf7k")
+
+[node name="Camera3D" type="Camera3D" parent="CameraBody" unique_id=596675886]
+transform = Transform3D(1, 0, 0, 0, 0.1659004, 0.9861425, 0, -0.9861425, 0.1659004, 0.155, 8, -0.269)
+script = ExtResource("2_qqjab")
+max_height = 256.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraBody" unique_id=1971632614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9453123, 0)
+shape = SubResource("SphereShape3D_p6dlx")

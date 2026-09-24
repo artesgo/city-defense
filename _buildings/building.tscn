@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dv1oijvx263xi"]
+
+[ext_resource type="Script" uid="uid://cus1igkn1aon6" path="res://_buildings/building.gd" id="1_48cx6"]
+
+[node name="Building" type="Node3D" unique_id=304500698]
+script = ExtResource("1_48cx6")
+
+[node name="CSG_BUILDING" type="CSGBox3D" parent="." unique_id=1325224686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.475342, 0)
+use_collision = true
+size = Vector3(8, 10.950684, 8)

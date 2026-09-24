@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://d14blovffv8v7"]
+
+[ext_resource type="Script" uid="uid://c5ps6mncvnb6m" path="res://_ui/ui_controller.gd" id="1_exr5j"]
+[ext_resource type="Texture2D" uid="uid://du2gay4ynm6y0" path="res://icon.svg" id="1_h1tlj"]
+[ext_resource type="Texture2D" uid="uid://yrcj87jy55fu" path="res://_ui/assets/s_hub.jpg" id="2_c12h0"]
+[ext_resource type="Script" uid="uid://6jrhu8h56w7j" path="res://_ui/ui_pause_menu.gd" id="3_n7u5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h5yi"]
+texture = ExtResource("2_c12h0")
+
+[node name="Ui" type="Node2D" unique_id=1602153190]
+
+[node name="UIOverlay" type="CanvasLayer" parent="." unique_id=2002293351]
+follow_viewport_enabled = true
+script = ExtResource("1_exr5j")
+
+[node name="BuildUI" type="Control" parent="UIOverlay" unique_id=1619178509]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="BuildMenu" type="PanelContainer" parent="UIOverlay/BuildUI" unique_id=1875419445]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIOverlay/BuildUI/BuildMenu" unique_id=2102224044]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Road" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=217433259]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Road2" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=376357469]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Road3" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=135752558]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Road4" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=759025986]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Road5" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=78383254]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Road6" type="TextureButton" parent="UIOverlay/BuildUI/BuildMenu/HBoxContainer" unique_id=1726499972]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_h1tlj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BaseUI" type="Control" parent="UIOverlay" unique_id=368598215]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD_TOP_LEFT" type="MarginContainer" parent="UIOverlay/BaseUI" unique_id=20256112]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIOverlay/BaseUI/HUD_TOP_LEFT" unique_id=1081218380]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIOverlay/BaseUI/HUD_TOP_LEFT/VBoxContainer" unique_id=508794530]
+layout_mode = 2
+text = "HP:"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UIOverlay/BaseUI/HUD_TOP_LEFT/VBoxContainer" unique_id=15427276]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIOverlay/BaseUI/HUD_TOP_LEFT/VBoxContainer" unique_id=1767209695]
+layout_mode = 2
+text = "Progression"
+
+[node name="HUD_TOP_RIGHT" type="MarginContainer" parent="UIOverlay/BaseUI" unique_id=413143243]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_bottom = 55.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIOverlay/BaseUI/HUD_TOP_RIGHT" unique_id=1507225037]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIOverlay/BaseUI/HUD_TOP_RIGHT/VBoxContainer" unique_id=1653067507]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "HP:"
+
+[node name="Label2" type="Label" parent="UIOverlay/BaseUI/HUD_TOP_RIGHT/VBoxContainer" unique_id=1751525427]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Progression"
+
+[node name="PauseMenu" type="PanelContainer" parent="UIOverlay/BaseUI" unique_id=617011263]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8h5yi")
+script = ExtResource("3_n7u5t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIOverlay/BaseUI/PauseMenu" unique_id=292499933]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=481944144]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="Spacer" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=785143063]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "        "
+
+[node name="Settings" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=1413992744]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="Spacer2" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=556495895]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "        "
+
+[node name="Exit" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=828635691]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit to main menu"
+
+[node name="Spacer3" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=858114926]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "        "
+
+[node name="Label5" type="Label" parent="UIOverlay/BaseUI/PauseMenu/HBoxContainer" unique_id=1703009104]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit to Desktop"
