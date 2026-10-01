@@ -14,3 +14,4 @@ func _on_escape(open):
 
 func _on_click(event):
 	print_debug(event)
+	print_debug('clicked')

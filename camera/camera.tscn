@@ -14,11 +14,10 @@ collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_gsf7k")
 
-[node name="Camera3D" type="Camera3D" parent="CameraBody" unique_id=596675886]
-transform = Transform3D(1, 0, 0, 0, 0.1659004, 0.9861425, 0, -0.9861425, 0.1659004, 0.155, 8, -0.269)
-script = ExtResource("2_qqjab")
-max_height = 256.0
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraBody" unique_id=1971632614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9453123, 0)
 shape = SubResource("SphereShape3D_p6dlx")
+
+[node name="Camera3D" type="Camera3D" parent="CameraBody" unique_id=538040342]
+transform = Transform3D(1, 0, 0, 0, 0.016239362, 0.99986815, 0, -0.99986815, 0.016239362, -11.947145, 23.089115, 0)
+script = ExtResource("2_qqjab")

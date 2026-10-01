@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cqbrcv0yo6bt6"]
+
+[ext_resource type="Script" uid="uid://b0mnxo7ftfku5" path="res://_characters/route_attack.gd" id="1_gyitx"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_lrjkw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8h5yi"]
+height = 0.5
+radius = 1.0
+
+[node name="Enemy" type="Node3D" unique_id=2071226529]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=505162165]
+script = ExtResource("1_gyitx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1815294169]
+mesh = SubResource("TorusMesh_lrjkw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=2025082560]
+shape = SubResource("CylinderShape3D_8h5yi")

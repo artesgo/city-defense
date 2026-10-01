@@ -16,24 +16,23 @@ func emit_escape(event):
 			menu_open = !menu_open
 			emit_signal("escape_signal", menu_open)
 
-func _on_road_click(event):
-	_emit_click(event)
-
-func _on_zone_residential_click(event):
-	_emit_click(event)
-
-func _on_zone_commercial_click(event):
-	_emit_click(event)
-
-func _on_zone_industrial_click(event):
-	_emit_click(event)
-
-func _on_miner_click(event):
-	_emit_click(event)
-
-func _on_bulldozer_click(event):
-	_emit_click(event)
-
 func _emit_click(event):
-	if event is InputEventMouseButton and event.pressed and MOUSE_BUTTON_LEFT:
-		emit_signal('click_signal', event)
+	emit_signal('click_signal', event)
+
+func _on_road_pressed():
+	_emit_click('build_road')
+
+func _on_zone_residential_pressed():
+	_emit_click('build_residential')
+
+func _on_zone_commercial_pressed():
+	_emit_click('build_commercial')
+
+func _on_zone_industrial_pressed():
+	_emit_click('build_industrial')
+
+func _on_mine_pressed():
+	_emit_click('build_mine')
+
+func _on_bulldozer_pressed():
+	_emit_click('build_dozer')

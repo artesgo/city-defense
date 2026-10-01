@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://p86p27y6o066"]
+
+[ext_resource type="Script" uid="uid://btb58jk7x6l83" path="res://cube/cube.gd" id="1_438ar"]
+[ext_resource type="Texture2D" uid="uid://cs20ldv05ghcu" path="res://textures/tilemap_mat.png" id="2_oans0"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8h5yi"]
+
+[node name="VoxelTest" type="Node2D" unique_id=2006101522]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1774202811]
+mesh = SubResource("ArrayMesh_8h5yi")
+script = ExtResource("1_438ar")
+atlas_texture = ExtResource("2_oans0")
+atlas_cols = null
+atlas_rows = null
