@@ -78,7 +78,7 @@ func _input(event: InputEvent) -> void:
 	# ----- 2️⃣ Right‑mouse click ------------------------------------
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		_clear_points()
-
+#C:/Users/Jinzo/Documents/planner
 # ------------------------------------------------------------------
 # Raycast helper
 # ------------------------------------------------------------------

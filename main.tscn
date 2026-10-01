@@ -22,7 +22,7 @@ albedo_color = Color(0, 0.45, 0.225, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_r742n"]
 
-[node name="Node3D" type="Node3D" unique_id=1055273545]
+[node name="root" type="Node3D" unique_id=1055273545]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=742904555]
 transform = Transform3D(1, 0, 0, 0, 0.6588623, 0.75226355, 0, -0.75226355, 0.6588623, -9.536743e-07, 8.632524, 7.454804)
@@ -56,7 +56,19 @@ material = SubResource("StandardMaterial3D_1bvp3")
 [node name="Enemies" type="Node3D" parent="." unique_id=261712233]
 
 [node name="Enemy" parent="Enemies" unique_id=475462900 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6786976, 3.48882, -4.077057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0659409, 23.587004, -16.649206)
+
+[node name="Enemy2" parent="Enemies" unique_id=2071226529 instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.833935, 23.587008, 19.948412)
+
+[node name="Enemy3" parent="Enemies" unique_id=1342687113 instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.220367, 23.587002, -11.778531)
+
+[node name="Enemy4" parent="Enemies" unique_id=160911151 instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.429337, 23.587006, 17.564436)
+
+[node name="Enemy5" parent="Enemies" unique_id=1968846293 instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.876675, 23.587002, -16.041979)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=31995244]
 navigation_mesh = SubResource("NavigationMesh_r742n")
