@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://djlhl1uufcrgc"]
+
+[ext_resource type="Script" uid="uid://cvvk4ihkfll58" path="res://_buildings/_projectiles/bullet.gd" id="1_cikta"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8h5yi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8h5yi"]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r742n"]
+albedo_color = Color(0.9619712, 0.16203833, 0, 1)
+
+[node name="Bullet" type="RigidBody3D" unique_id=1838850207]
+script = ExtResource("1_cikta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=908258617]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("SphereShape3D_8h5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=570989868]
+mesh = SubResource("SphereMesh_8h5yi")
+surface_material_override/0 = SubResource("StandardMaterial3D_r742n")

@@ -23,7 +23,6 @@ var _cooldown : float = 0.0
 func _process(delta) -> void:
 	# when dropping off or picking up, stay around for a while
 	if _cooldown > 0:
-		print_debug(_cooldown)
 		_cooldown -= delta
 		if _cooldown < 0:
 			_cooldown = 0

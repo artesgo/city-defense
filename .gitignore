@@ -2,4 +2,4 @@
 .godot/
 /android/
 *.tmp
-.gd.uid
+*.gd.uid

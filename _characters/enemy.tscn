@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqbrcv0yo6bt6"]
 
-[ext_resource type="Script" uid="uid://b0mnxo7ftfku5" path="res://_characters/route_attack.gd" id="1_gyitx"]
+[ext_resource type="Script" uid="uid://bg8pbx51jeq7s" path="res://_characters/enemy.gd" id="1_gyitx"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_lrjkw"]
 
@@ -8,13 +8,16 @@
 height = 0.5
 radius = 1.0
 
-[node name="Enemy" type="Node3D" unique_id=2071226529]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=505162165]
+[node name="Enemy" type="CharacterBody3D" unique_id=584384264]
 script = ExtResource("1_gyitx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1815294169]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1815294169]
 mesh = SubResource("TorusMesh_lrjkw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=2025082560]
+[node name="Area3D" type="Area3D" parent="." unique_id=32757029]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2025082560]
+shape = SubResource("CylinderShape3D_8h5yi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1084064868]
 shape = SubResource("CylinderShape3D_8h5yi")

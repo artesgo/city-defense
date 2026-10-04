@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0c25edaqw06q"]
 
-[ext_resource type="Script" uid="uid://dk2oqjujy0itw" path="res://_paths/road_builder.gd" id="2_to7xm"]
+[ext_resource type="Script" uid="uid://dvjo343n3or2n" path="res://_paths/road_builder.gd" id="2_to7xm"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4c57u"]
 

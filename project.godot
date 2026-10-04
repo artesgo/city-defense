@@ -24,6 +24,13 @@ Uuid="*uid://ddjhdyghuev4q"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://_buildings/": "orange",
+"res://_characters/": "green"
+}
+
 [input]
 
 move_left={

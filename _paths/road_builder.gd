@@ -60,7 +60,6 @@ func _input(event: InputEvent) -> void:
 
 	# ----- 1️⃣ Left‑mouse click ------------------------------------
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print_debug('click', event)
 		var hit = _raycast_from_mouse(event.position)
 		if hit:
 			var point : Vector3 = hit.position
@@ -68,7 +67,6 @@ func _input(event: InputEvent) -> void:
 
 			# Snap logic
 			#point = _snap_to_nearest_road(point) or _snap_to_grid(point)
-			print_debug("hit", point.y)
 			click_positions.append(point)
 			match click_positions.size():
 				1: _place_marker(START, point)

@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://d14blovffv8v7" path="res://_ui/ui.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d0c25edaqw06q" path="res://_paths/road_builder.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cavqfr78xacm4" path="res://camera/camera.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cvlupkm2x7u86" path="res://road_listener.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dv1oijvx263xi" path="res://_buildings/building.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cqbrcv0yo6bt6" path="res://_characters/enemy.tscn" id="4_lquwl"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_8h5yi"]
+[ext_resource type="Script" uid="uid://ukw0yfq8e6tu" path="res://enemy_spawner.gd" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_8h5yi"]
 ambient_light_color = Color(0.30692267, 0.3069227, 0.3069227, 1)
@@ -17,10 +18,10 @@ volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.79241675, 0.95881695, 0.9683102, 1)
 volumetric_fog_length = 320.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_8h5yi"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0, 0.45, 0.225, 1)
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_r742n"]
 
 [node name="root" type="Node3D" unique_id=1055273545]
 
@@ -35,16 +36,36 @@ shadow_enabled = true
 [node name="TopDownCamera" parent="PlayerControlled" unique_id=392642930 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="RoadBuilder" parent="PlayerControlled" unique_id=1293868424 instance=ExtResource("3_1bvp3")]
-
-[node name="Command" type="CSGBox3D" parent="PlayerControlled" unique_id=1034860298]
-use_collision = true
-
-[node name="RoadSegment" type="MeshInstance3D" parent="PlayerControlled" unique_id=194670864]
-mesh = SubResource("QuadMesh_8h5yi")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=680396956]
 environment = SubResource("Environment_8h5yi")
+
+[node name="RoadBuilder" parent="." unique_id=1293868424 instance=ExtResource("3_1bvp3")]
+
+[node name="RoadSegment" type="MeshInstance3D" parent="RoadBuilder" unique_id=194670864]
+mesh = SubResource("QuadMesh_8h5yi")
+
+[node name="Buildings" type="Node3D" parent="." unique_id=1783866271]
+
+[node name="Command" type="CSGBox3D" parent="Buildings" unique_id=1034860298]
+use_collision = true
+
+[node name="Building" parent="Buildings" unique_id=304500698 instance=ExtResource("4_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.781666, 0, -8.238916)
+
+[node name="Building2" parent="Buildings" unique_id=131266326 instance=ExtResource("4_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4677515, 0, -11.901087)
+
+[node name="Building3" parent="Buildings" unique_id=1526109585 instance=ExtResource("4_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3243227, 0, 16.357504)
+
+[node name="Roads" type="Node3D" parent="." unique_id=673854834]
+script = ExtResource("4_7mycd")
+
+[node name="EnemySpawner" type="Node3D" parent="." unique_id=261712233]
+script = ExtResource("5_lquwl")
+enemy_scenes = Array[PackedScene]([ExtResource("4_lquwl")])
+
+[node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1990667315]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=812550194]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -1, 0)
@@ -53,22 +74,6 @@ use_collision = true
 collision_layer = 32769
 material = SubResource("StandardMaterial3D_1bvp3")
 
-[node name="Enemies" type="Node3D" parent="." unique_id=261712233]
+[node name="Projectiles" type="Node3D" parent="." unique_id=2015318130]
 
-[node name="Enemy" parent="Enemies" unique_id=475462900 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0659409, 23.587004, -16.649206)
-
-[node name="Enemy2" parent="Enemies" unique_id=2071226529 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.833935, 23.587008, 19.948412)
-
-[node name="Enemy3" parent="Enemies" unique_id=1342687113 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.220367, 23.587002, -11.778531)
-
-[node name="Enemy4" parent="Enemies" unique_id=160911151 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.429337, 23.587006, 17.564436)
-
-[node name="Enemy5" parent="Enemies" unique_id=1968846293 instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.876675, 23.587002, -16.041979)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=31995244]
-navigation_mesh = SubResource("NavigationMesh_r742n")
+[connection signal="construct_road" from="RoadBuilder" to="Roads" method="_on_road_builder_construct_road"]
