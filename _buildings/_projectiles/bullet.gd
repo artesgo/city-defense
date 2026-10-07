@@ -23,3 +23,8 @@ func _process(delta: float) -> void:
 
 func get_damage() -> float:
 	return dmg
+
+func on_hit() -> void:
+	#play particle effects
+	self.queue_free()
+	return

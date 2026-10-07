@@ -27,7 +27,6 @@ class_name EnemySpawner
 
 var _timer : Timer
 var _rng   := RandomNumberGenerator.new()
-var _enemies_parent : Node3D  # The "Enemies" child node
 
 func _ready() -> void:
 	if enemy_scenes.is_empty():
@@ -79,10 +78,12 @@ func spawn_enemy() -> void:
 		0.0,
 		_rng.randf_range(-spawn_radius, spawn_radius)
 	)
+	
+	# Put the new enemy instance under EnemySpawner
 	var enemies_root = get_tree().current_scene.get_node('EnemySpawner')
 
-	instance.global_transform.origin = global_transform.origin + random_offset
-
-	# Add it under the Enemies child node (not directly to root)
+	# Add child before global transform, otherwise godot complains
 	enemies_root.add_child(instance)
+	instance.global_transform.origin = global_transform.origin + random_offset
+	# Add it under the Enemies child node (not directly to root)
 	_timer.start(spawn_interval)

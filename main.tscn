@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d14blovffv8v7" path="res://_ui/ui.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d0c25edaqw06q" path="res://_paths/road_builder.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cavqfr78xacm4" path="res://camera/camera.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://b4ggjxmohojfx" path="res://selectable.gd" id="4_5vw27"]
 [ext_resource type="Script" uid="uid://cvlupkm2x7u86" path="res://road_listener.gd" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dv1oijvx263xi" path="res://_buildings/building.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cqbrcv0yo6bt6" path="res://_characters/enemy.tscn" id="4_lquwl"]
@@ -22,6 +23,8 @@ volumetric_fog_length = 320.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0, 0.45, 0.225, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h5yi"]
 
 [node name="root" type="Node3D" unique_id=1055273545]
 
@@ -49,14 +52,49 @@ mesh = SubResource("QuadMesh_8h5yi")
 [node name="Command" type="CSGBox3D" parent="Buildings" unique_id=1034860298]
 use_collision = true
 
+[node name="PLACEHOLDER_WORLD" type="CSGBox3D" parent="Buildings" unique_id=812550194]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -1, 0)
+layers = 129
+use_collision = true
+collision_layer = 32769
+material = SubResource("StandardMaterial3D_1bvp3")
+script = ExtResource("4_5vw27")
+
+[node name="Area3D" type="Area3D" parent="Buildings/PLACEHOLDER_WORLD" unique_id=446347795]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/PLACEHOLDER_WORLD/Area3D" unique_id=2078857319]
+shape = SubResource("BoxShape3D_8h5yi")
+debug_color = Color(1, 0, 0.3166666, 0.41960785)
+
 [node name="Building" parent="Buildings" unique_id=304500698 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.781666, 0, -8.238916)
+projectile_duration = null
+projectile_dmg = 10.0
+projectile_spd = null
+fire_rate = null
+range = null
+rotation_speed = null
+enemy_container_path = null
 
 [node name="Building2" parent="Buildings" unique_id=131266326 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4677515, 0, -11.901087)
+projectile_duration = null
+projectile_dmg = 10.0
+projectile_spd = null
+fire_rate = null
+range = null
+rotation_speed = null
+enemy_container_path = null
 
 [node name="Building3" parent="Buildings" unique_id=1526109585 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3243227, 0, 16.357504)
+projectile_duration = null
+projectile_dmg = 10.0
+projectile_spd = null
+fire_rate = null
+range = null
+rotation_speed = null
+enemy_container_path = null
 
 [node name="Roads" type="Node3D" parent="." unique_id=673854834]
 script = ExtResource("4_7mycd")
@@ -67,13 +105,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_lquwl")])
 
 [node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1990667315]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=812550194]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -1, 0)
-layers = 129
-use_collision = true
-collision_layer = 32769
-material = SubResource("StandardMaterial3D_1bvp3")
-
 [node name="Projectiles" type="Node3D" parent="." unique_id=2015318130]
 
 [connection signal="construct_road" from="RoadBuilder" to="Roads" method="_on_road_builder_construct_road"]
+[connection signal="input_event" from="Buildings/PLACEHOLDER_WORLD/Area3D" to="Buildings/PLACEHOLDER_WORLD" method="_on_area_3d_input_event"]

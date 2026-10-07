@@ -1,6 +1,7 @@
 # Tower.gd
-extends Node3D
+extends SelectableNode
 
+class_name Tower
 ##########################
 # === EXPORT SETTINGS ==== #
 ##########################
@@ -19,6 +20,7 @@ extends Node3D
 
 ## Turn‑speed in radians/sec. 0 → instant turn.
 @export var rotation_speed : float = 4.0
+
 
 ## Path from the main scene to the node that contains all live enemies.
 # (e.g. "EnemySpawner/Enemies")
@@ -96,9 +98,10 @@ func _look_at_target(target : Node3D, delta : float) -> void:
 		rotation.y = target_rotation.y
 
 func _fire_projectile(target : Node3D) -> void:
-	print_debug('fire projectile')
 	var projectile = projectile_scene.instantiate() as RigidBody3D
 	projectile.duration = projectile_duration
+	projectile.dmg = projectile_dmg
+
 	if not projectile:
 		push_error("Tower: projectile scene did NOT return a RigidBody3D!")
 		return
@@ -118,3 +121,8 @@ func _fire_projectile(target : Node3D) -> void:
 
 	# Add it to the scene so physics runs
 	#get_tree().current_scene.add_child(projectile)
+
+
+func _on_area_3d_input_event(_camera, event, _event_position, _normal, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_select_self()

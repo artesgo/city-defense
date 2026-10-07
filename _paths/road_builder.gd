@@ -3,7 +3,7 @@ extends Node3D
 
 class_name RoadBuilder
 
-@export var cam : Camera3D = null          # Optional – will be auto‑found if left empty.
+@export var camera : Camera3D = null          # Optional – will be auto‑found if left empty.
 @onready var START  : MeshInstance3D = $Start
 @onready var MIDWAY : MeshInstance3D = $Midway
 @onready var END    : MeshInstance3D = $End
@@ -44,9 +44,9 @@ func _ready() -> void:
 	#_preview_line.material_override = mat
 
 	# Grab the camera if not exported
-	if cam == null:
-		cam = get_viewport().get_camera_3d()
-		assert(cam != null, "No Camera3D found – please assign one or add one to the scene.")
+	if camera == null:
+		camera = get_viewport().get_camera_3d()
+		assert(camera != null, "No Camera3D found – please assign one or add one to the scene.")
 
 	# Load highlight material (you can create this in Godot and set the path)
 	_highlight_material = preload("res://materials/deleting.tres")
@@ -81,8 +81,8 @@ func _input(event: InputEvent) -> void:
 # Raycast helper
 # ------------------------------------------------------------------
 func _raycast_from_mouse(pos : Vector2) -> Dictionary:
-	var from = cam.project_ray_origin(pos)
-	var to   = from + cam.project_ray_normal(pos) * 1000.0
+	var from = camera.project_ray_origin(pos)
+	var to   = from + camera.project_ray_normal(pos) * 1000.0
 
 	var space_state = get_world_3d().direct_space_state
 	var params = PhysicsRayQueryParameters3D.create(from, to)
@@ -150,7 +150,7 @@ func _draw_preview_line(a : Vector3, b : Vector3) -> void:
 
 	var arr = ArrayMesh.new()
 	var verts : PackedVector3Array = [a, b]
-	var indices : PackedInt32Array = [0, 1]
+	var _indices : PackedInt32Array = [0, 1]
 
 	# Build the immediate mesh
 	_preview_line.clear_surfaces()
@@ -235,7 +235,7 @@ func _create_road_segments() -> void:
 		segment.position = positions[i]
 
 		# Simple orientation – assumes the road is a straight cylinder
-		var dir = (positions[i+1] - positions[i]).normalized()
+		var _dir = (positions[i+1] - positions[i]).normalized()
 		segment.look_at(positions[i+1], Vector3.UP)
 
 # ------------------------------------------------------------------

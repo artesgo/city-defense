@@ -8,13 +8,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-#TODO: 
+#TODO: build straight road
 
-func _on_road_builder_construct_road(positions):
-	print_debug('road listener received')
-	print_debug(positions)
+
+#TODO: build curved road on 3 selections
+func _on_road_builder_construct_road(_positions):
+	pass
 
 #TODO: when roads are built, make plots next to road buildable

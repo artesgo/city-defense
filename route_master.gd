@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 @onready var player : Navigator = $Character/CharacterBody3D
 #@onready var target : Building = $BUILDINGS/Building

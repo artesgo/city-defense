@@ -10,7 +10,7 @@ extends CharacterBody3D
 
 var target: Node3D = null              # Reference to the Command node
 var _cooldown = attack_cooldown
-var _hp := 0
+var _hp : float = 0.0
 var hit_area : Area3D                      # Reference to the child Area
 
 func _ready() -> void:
@@ -54,14 +54,13 @@ func _attack() -> void:
 
 func take_damage(amount : int) -> void:
 	hp -= amount
-	print("%s took %d dmg, HP left: %d" % [name, amount, hp])
+	#print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
 
 	if hp <= 0:
 		die()
 
-
 func die() -> void:
-	print("%s died!" % name)
+	#print("%s died!" % name)
 	queue_free()
 
 ##########################
@@ -69,26 +68,13 @@ func die() -> void:
 ##########################
 
 func _on_body_entered(body : Node) -> void:
-	print_debug('colliding with bullet')
 	# 1️⃣ Quick sanity checks
 	if not body or not body.is_inside_tree():
 		return
 
-	# 2️⃣ Identify projectiles – we use a group name for flexibility.
-	if not body.is_in_group("Projectiles"):
-		return
-	var proj_damage : int = 10          # default fallback
-
-	if body.has_method("get_damage"):        # projectile exposes a method
-		proj_damage = body.get_damage()
-	elif "damage" in body:                  # or it has an exported property
-		proj_damage = float(body.damage)
-
-	take_damage(proj_damage)
+	if (body.has_method('get_damage')):
+		take_damage(body.get_damage())
 
 	# Optional: let the projectile react (e.g., play hit effect)
 	if body.has_method("on_hit"):
 		body.on_hit()
-
-	# Destroy the projectile so it doesn't keep colliding.
-	body.queue_free()

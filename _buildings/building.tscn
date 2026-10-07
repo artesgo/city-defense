@@ -7,15 +7,39 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_8h5yi"]
 
+[sub_resource type="TorusMesh" id="TorusMesh_8h5yi"]
+inner_radius = 1.075
+outer_radius = 1.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud6ph"]
+albedo_color = Color(0, 0.7591207, 0.5673306, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h5yi"]
+size = Vector3(1, 0.5183716, 1)
+
 [node name="Building" type="Node3D" unique_id=304500698]
 script = ExtResource("1_48cx6")
 projectile_scene = ExtResource("2_2entt")
 fire_rate = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1219878044]
+[node name="Area3D" type="Area3D" parent="." unique_id=359303160]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1219878044]
 transform = Transform3D(8, 0, 0, 0, 2, 0, 0, 0, 8, 0, 3.5, 0)
 mesh = SubResource("PrismMesh_8h5yi")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=864851127]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D" unique_id=864851127]
 transform = Transform3D(7.5, 0, 0, 0, 3, 0, 0, 0, 8, 0, 1, 0)
 mesh = SubResource("BoxMesh_8h5yi")
+
+[node name="Selection" type="MeshInstance3D" parent="Area3D" unique_id=1617320171]
+transform = Transform3D(7.5, 0, 0, 0, 3, 0, 0, 0, 8, 0, 1, 0)
+visible = false
+mesh = SubResource("TorusMesh_8h5yi")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud6ph")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1181179134]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_8h5yi")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
