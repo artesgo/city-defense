@@ -80,16 +80,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
 [node name="Building" parent="Buildings" unique_id=304500698 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.781666, 0, -8.238916)
 projectile_dmg = 10.0
+projectile_deceleration = 1.0
 fire_rate = 2.0
 
 [node name="Building2" parent="Buildings" unique_id=131266326 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4677515, 0, -11.901087)
 projectile_dmg = 10.0
+projectile_deceleration = 5.0
 fire_rate = 2.0
 
 [node name="Building3" parent="Buildings" unique_id=1526109585 instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3243227, 0, 16.357504)
 projectile_dmg = 10.0
+projectile_deceleration = 15.0
 fire_rate = 2.0
 
 [node name="Roads" type="Node3D" parent="." unique_id=673854834]

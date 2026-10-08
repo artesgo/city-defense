@@ -17,7 +17,7 @@ func _ready() -> void:
 	var root = get_tree().current_scene
 	target = root.get_node("Buildings/Command")
 	_hp = hp
-	hit_area = $Area3D as Area3D
+	hit_area = $Selectable/Area3D as Area3D
 	if not hit_area:
 		push_error("Enemy: No child named 'HitArea' found.")
 		return
