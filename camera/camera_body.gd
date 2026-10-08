@@ -5,7 +5,7 @@ const SPEED = 12.0
 const JUMP_VELOCITY = 4.5
 const FAST = 2.0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta

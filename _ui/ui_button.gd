@@ -2,6 +2,10 @@ extends Button
 
 class_name UiButton
 
+@export var event_name : String = ''
+
+signal clicked
+
 func _ready():
 	self.mouse_filter = Control.MOUSE_FILTER_STOP
 
@@ -28,12 +32,10 @@ func _gui_input(event: InputEvent) -> void:
 			event.set_handled()
 		else:
 			accept_event()
-			
+
 ## ------------------------------------------------------------------
 ## 3. Optional: expose a signal so other code can react
 ## ------------------------------------------------------------------
-signal clicked
-
 func _on_pressed() -> void:
 	# This signal is emitted by Button after it processes the click.
-	emit_signal("clicked")
+	clicked.emit(event_name)

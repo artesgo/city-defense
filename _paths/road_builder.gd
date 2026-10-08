@@ -148,7 +148,7 @@ func _draw_preview_line(a : Vector3, b : Vector3) -> void:
 		add_child(mesh_instance)
 	mesh_instance.mesh = _preview_line
 
-	var arr = ArrayMesh.new()
+	var _arr = ArrayMesh.new()
 	var verts : PackedVector3Array = [a, b]
 	var _indices : PackedInt32Array = [0, 1]
 

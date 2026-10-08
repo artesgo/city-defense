@@ -11,16 +11,15 @@ class_name Tower
 @export var projectile_duration : float = 1.0
 @export var projectile_dmg : float = 5.0
 @export var projectile_spd : float = 60.0
+@export var projectile_range : float = 20.0
 
 ## How many shots per second (higher = faster).
 @export_range(0.1, 10.0) var fire_rate : float = 2.0
 
 ## Distance within which enemies can be targeted.
-@export var range : float = 20.0
 
 ## Turn‑speed in radians/sec. 0 → instant turn.
 @export var rotation_speed : float = 4.0
-
 
 ## Path from the main scene to the node that contains all live enemies.
 # (e.g. "EnemySpawner/Enemies")
@@ -73,7 +72,7 @@ func _process(delta : float) -> void:
 
 func _get_nearest_enemy() -> Node3D:
 	var nearest : Node3D
-	var nearest_dist_sq := range * range   # use squared distance for speed
+	var nearest_dist_sq := projectile_range * projectile_range   # use squared distance for speed
 
 	for child in _enemy_container.get_children():
 		if not child is Node3D:  # ignore non‑spatial nodes
@@ -121,7 +120,6 @@ func _fire_projectile(target : Node3D) -> void:
 
 	# Add it to the scene so physics runs
 	#get_tree().current_scene.add_child(projectile)
-
 
 func _on_area_3d_input_event(_camera, event, _event_position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

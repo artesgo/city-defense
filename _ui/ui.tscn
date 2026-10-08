@@ -1,29 +1,364 @@
 [gd_scene format=3 uid="uid://d14blovffv8v7"]
 
-[ext_resource type="Script" uid="uid://6jrhu8h56w7j" path="res://_ui/ui_pause_menu.gd" id="1_h1tlj"]
+[ext_resource type="Script" uid="uid://ivs5qic8mdyk" path="res://_ui/main_menu_button.gd" id="8_88a2u"]
+[ext_resource type="Script" uid="uid://b3n5w7q6xw08q" path="res://_ui/bulldoze.gd" id="9_y8c01"]
 
-[node name="Ui" type="Node2D" unique_id=835928203]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h5yi"]
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1190694424]
+[sub_resource type="GDScript" id="GDScript_c12h0"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
+
+[node name="Ui" type="Control" unique_id=2051298753]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.9935239)
+mouse_filter = 1
 
-[node name="Pause" type="PanelContainer" parent="." unique_id=2014429233]
-anchors_preset = 15
+[node name="MarginMainMenu" type="MarginContainer" parent="." unique_id=254647680]
+visible = false
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginMainMenu" unique_id=72647894]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginMainMenu/HBoxContainer" unique_id=1965669294]
+layout_mode = 2
+
+[node name="BottomBar" type="MarginContainer" parent="." unique_id=842760761]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -44.0
+offset_bottom = 5.0
 grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_h1tlj")
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Pause" unique_id=254647680]
+[node name="PanelContainer" type="PanelContainer" parent="BottomBar" unique_id=1951513225]
+material = SubResource("ShaderMaterial_8h5yi")
 layout_mode = 2
+size_flags_vertical = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Pause/MarginContainer" unique_id=72647894]
+[node name="MarginContainer" type="MarginContainer" parent="BottomBar/PanelContainer" unique_id=1000035387]
 layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 12
 
-[node name="Button" type="Button" parent="Pause/MarginContainer/HBoxContainer" unique_id=1965669294]
+[node name="MenuStack" type="VBoxContainer" parent="BottomBar/PanelContainer/MarginContainer" unique_id=1001939472]
 layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxRoad" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=1999389553]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=203111991]
+layout_mode = 2
+text = "Dirt Road
+"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=1516344714]
+layout_mode = 2
+text = "Road"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=1125553350]
+layout_mode = 2
+text = "One-way"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=1630569031]
+layout_mode = 2
+text = "Highway
+"
+
+[node name="Button5" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=1942946741]
+layout_mode = 2
+text = "Train track
+"
+
+[node name="Button6" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=25694442]
+layout_mode = 2
+text = "Tram track"
+
+[node name="Button7" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=992838437]
+layout_mode = 2
+text = "Monorail"
+
+[node name="Button8" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRoad" unique_id=616277076]
+layout_mode = 2
+text = "Subway"
+
+[node name="HBoxTower" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=1084582540]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=639756129]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=2011508167]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=1473086198]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=489408460]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button5" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=948987236]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button6" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=830257280]
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button7" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxTower" unique_id=977540296]
+layout_mode = 2
+text = "Tower1"
+
+[node name="HBoxPower" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=1804592620]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=355508128]
+layout_mode = 2
+text = "Power Line"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=411103347]
+layout_mode = 2
+text = "Coal"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=314740092]
+layout_mode = 2
+text = "Gas"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=1364045238]
+layout_mode = 2
+text = "Nuclear
+"
+
+[node name="Button5" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=1014864589]
+layout_mode = 2
+text = "Wind
+"
+
+[node name="Button6" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=1331378330]
+layout_mode = 2
+text = "Solar
+"
+
+[node name="Button7" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxPower" unique_id=1080944988]
+layout_mode = 2
+text = "Hydro Dam"
+
+[node name="HBoxWater" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=982318984]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxWater" unique_id=442778833]
+layout_mode = 2
+text = "Pump"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxWater" unique_id=2125391615]
+layout_mode = 2
+text = "Sewage"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxWater" unique_id=57378234]
+layout_mode = 2
+text = "Treatment"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxWater" unique_id=1486089579]
+layout_mode = 2
+text = "Desalinator
+"
+
+[node name="HBoxEducation" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=1532014121]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxEducation" unique_id=1498024340]
+layout_mode = 2
+text = "Primary"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxEducation" unique_id=457397980]
+layout_mode = 2
+text = "Secondary"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxEducation" unique_id=661705555]
+layout_mode = 2
+text = "College"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxEducation" unique_id=710168542]
+layout_mode = 2
+text = "University
+"
+
+[node name="HBoxServices" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=1585149190]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxServices" unique_id=534156239]
+layout_mode = 2
+text = "Police
+"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxServices" unique_id=1437714317]
+layout_mode = 2
+text = "Fire"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxServices" unique_id=1331101669]
+layout_mode = 2
+text = "Hospital"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxServices" unique_id=1260256022]
+layout_mode = 2
+text = "Sanitation
+
+"
+
+[node name="HBoxRecreation" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=714014237]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=1033013385]
+layout_mode = 2
+text = "Park"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=1911879985]
+layout_mode = 2
+text = "Basketball"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=1395846177]
+layout_mode = 2
+text = "Volleyball"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=2115319939]
+layout_mode = 2
+text = "Baseball
+"
+
+[node name="Button5" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=1500279815]
+layout_mode = 2
+text = "Pool
+"
+
+[node name="Button6" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxRecreation" unique_id=547294745]
+layout_mode = 2
+text = "Campgrounds"
+
+[node name="HBoxDecoration" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=655645119]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button1" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=531748311]
+layout_mode = 2
+text = "Tree1"
+
+[node name="Button2" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=498571786]
+layout_mode = 2
+text = "Tree1"
+
+[node name="Button3" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=660998505]
+layout_mode = 2
+text = "Tree1"
+
+[node name="Button4" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=949495848]
+layout_mode = 2
+text = "Tree1"
+
+[node name="Button5" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=712115696]
+layout_mode = 2
+text = "Tree1
+"
+
+[node name="Button6" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxDecoration" unique_id=1035517398]
+layout_mode = 2
+text = "Tree1"
+
+[node name="HBoxMainBar" type="HBoxContainer" parent="BottomBar/PanelContainer/MarginContainer/MenuStack" unique_id=987654321]
+layout_mode = 2
+size_flags_horizontal = 4
+script = SubResource("GDScript_c12h0")
+
+[node name="road" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=111]
+layout_mode = 2
+text = "Road"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxRoad"
+
+[node name="bulldoze" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=57656792]
+layout_mode = 2
+text = "Demolish"
+script = ExtResource("9_y8c01")
+
+[node name="tower" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=1818956967]
+layout_mode = 2
+text = "Tower
+"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxTower"
+
+[node name="electric" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=1641503093]
+layout_mode = 2
+text = "Power
+"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxPower"
+
+[node name="water" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=1225064778]
+layout_mode = 2
+text = "Water"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxWater"
+
+[node name="education" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=1837923611]
+layout_mode = 2
+text = "Education
+"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxEducation"
+
+[node name="services" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=1586137343]
+layout_mode = 2
+text = "Services"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxServices"
+
+[node name="recreation" type="Button" parent="BottomBar/PanelContainer/MarginContainer/MenuStack/HBoxMainBar" unique_id=2036129805]
+layout_mode = 2
+text = "Recreation"
+script = ExtResource("8_88a2u")
+drill_down = "HBoxRecreation"
