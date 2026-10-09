@@ -4,7 +4,8 @@ class_name SelectableNode
 
 static var current_selected : SelectableNode = null
 
-@onready var SELECTION  : MeshInstance3D = $Area3D/Selection
+@export var selection_size := 1
+@onready var SELECTION  : MeshInstance3D = $Selection
 
 var is_selected : bool = false
 
@@ -26,6 +27,6 @@ func _deselect():
 	if SELECTION:
 		SELECTION.visible = false
 
-func _on_area_3d_input_event(_camera, event, _event_position, _normal, _shape_idx):
+func _input_event(_camera, event, _event_position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		_select_self()

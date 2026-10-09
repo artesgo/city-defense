@@ -11,13 +11,12 @@ extends CharacterBody3D
 var target: Node3D = null              # Reference to the Command node
 var _cooldown = attack_cooldown
 var _hp : float = 0.0
-var hit_area : Area3D                      # Reference to the child Area
+@onready var hit_area : Area3D = $Area3D                   # Reference to the child Area
 
 func _ready() -> void:
 	var root = get_tree().current_scene
 	target = root.get_node("Buildings/Command")
 	_hp = hp
-	hit_area = $Selectable/Area3D as Area3D
 	if not hit_area:
 		push_error("Enemy: No child named 'HitArea' found.")
 		return
@@ -52,9 +51,9 @@ func _attack() -> void:
 	emit_signal("enemy_attack", self)
 	
 
-func take_damage(amount : int) -> void:
+func take_damage(amount : float) -> void:
 	hp -= amount
-	#print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
+	print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
 
 	if hp <= 0:
 		die()
@@ -73,6 +72,7 @@ func _on_body_entered(body : Node) -> void:
 		return
 
 	if (body.has_method('get_damage')):
+	#print_debug('has_dmg %s' % body.get_damage())
 		take_damage(body.get_damage())
 
 	# Optional: let the projectile react (e.g., play hit effect)

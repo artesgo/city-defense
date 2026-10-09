@@ -21,17 +21,25 @@ volumetric_fog_length = 320.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_8h5yi"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h5yi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+transparency = 1
+albedo_color = Color(0, 0.68782413, 0.35445324, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vw27"]
+material = SubResource("StandardMaterial3D_kek77")
+size = Vector3(2, 4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_color = Color(0, 0.7591207, 0.5673306, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0, 0.45, 0.225, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8h5yi"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_5vw27"]
 inner_radius = 1.075
 outer_radius = 1.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
-albedo_color = Color(0, 0.7591207, 0.5673306, 1)
 
 [node name="root" type="Node3D" unique_id=1055273545]
 
@@ -55,17 +63,31 @@ mesh = SubResource("QuadMesh_8h5yi")
 [node name="Buildings" type="Node3D" parent="." unique_id=1783866271]
 
 [node name="Command" type="CSGBox3D" parent="Buildings" unique_id=1034860298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 use_collision = true
+size = Vector3(2, 4, 2)
+
+[node name="Area3D" type="Area3D" parent="Buildings/Command" unique_id=2038679660]
+script = ExtResource("4_5vw27")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Command/Area3D" unique_id=1160186485]
+shape = SubResource("BoxShape3D_8h5yi")
+debug_color = Color(1, 0, 0.3166666, 0.41960785)
+
+[node name="Selection" type="MeshInstance3D" parent="Buildings/Command/Area3D" unique_id=1277495905]
+visible = false
+mesh = SubResource("BoxMesh_5vw27")
+surface_material_override/0 = SubResource("StandardMaterial3D_5vw27")
 
 [node name="PLACEHOLDER_WORLD" type="CSGBox3D" parent="Buildings" unique_id=812550194]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0.063108444, -1.0000019, 0.021242142)
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -1, 0)
 layers = 129
 use_collision = true
 collision_layer = 32769
 material = SubResource("StandardMaterial3D_1bvp3")
-script = ExtResource("4_5vw27")
 
 [node name="Area3D" type="Area3D" parent="Buildings/PLACEHOLDER_WORLD" unique_id=446347795]
+script = ExtResource("4_5vw27")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/PLACEHOLDER_WORLD/Area3D" unique_id=2078857319]
 shape = SubResource("BoxShape3D_8h5yi")
@@ -75,22 +97,23 @@ debug_color = Color(1, 0, 0.3166666, 0.41960785)
 transform = Transform3D(7.5, 0, 0, 0, 3, 0, 0, 0, 8, 0, 1, 0)
 visible = false
 mesh = SubResource("TorusMesh_5vw27")
-surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
+surface_material_override/0 = SubResource("StandardMaterial3D_5vw27")
 
 [node name="Building" parent="Buildings" unique_id=304500698 instance=ExtResource("4_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.781666, 0, -8.238916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8)
 projectile_dmg = 10.0
 projectile_deceleration = 1.0
 fire_rate = 2.0
 
 [node name="Building2" parent="Buildings" unique_id=131266326 instance=ExtResource("4_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4677515, 0, -11.901087)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -12)
 projectile_dmg = 10.0
 projectile_deceleration = 5.0
 fire_rate = 2.0
 
 [node name="Building3" parent="Buildings" unique_id=1526109585 instance=ExtResource("4_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3243227, 0, 16.357504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 18)
+projectile_duration = 0.3
 projectile_dmg = 10.0
 projectile_deceleration = 15.0
 fire_rate = 2.0
@@ -109,4 +132,3 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_lquwl")])
 [node name="Ui" parent="." unique_id=835928203 instance=ExtResource("1_ig7tw")]
 
 [connection signal="construct_road" from="RoadBuilder" to="Roads" method="_on_road_builder_construct_road"]
-[connection signal="input_event" from="Buildings/PLACEHOLDER_WORLD/Area3D" to="Buildings/PLACEHOLDER_WORLD" method="_on_area_3d_input_event"]

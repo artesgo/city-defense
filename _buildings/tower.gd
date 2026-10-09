@@ -1,5 +1,5 @@
 # Tower.gd
-extends SelectableNode
+extends Node3D
 
 class_name Tower
 ##########################
@@ -11,7 +11,9 @@ class_name Tower
 @export var projectile_duration : float = 1.0
 @export var projectile_dmg : float = 5.0
 @export var projectile_spd : float = 60.0
+@export var projectile_mass : float = 0.001
 @export var projectile_deceleration : float = 0.0
+@export var selectable_node : SelectableNode
 
 ## used by the tower
 @export var projectile_range : float = 20.0
@@ -114,9 +116,10 @@ func _fire_projectile(target : Node3D) -> void:
 	var dir = (target.global_transform.origin - projectile.global_transform.origin).normalized()
 	if projectile is RigidBody3D:
 		projectile.linear_velocity = dir * projectile_spd
+		projectile.deceleration = projectile_deceleration
 		projectile.duration = projectile_duration
 		projectile.dmg = projectile_dmg
-		projectile.deceleration = projectile_deceleration
+		projectile.projectile_mass = projectile_mass
 
 	# Optional: tell the projectile who its target is (if it needs to track)
 	if projectile.has_method("set_target"):
@@ -127,4 +130,4 @@ func _fire_projectile(target : Node3D) -> void:
 
 func _on_area_3d_input_event(_camera, event, _event_position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_select_self()
+		selectable_node._select_self()

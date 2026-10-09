@@ -14,6 +14,7 @@ rings = 4
 albedo_color = Color(0.9619712, 0.16203833, 0, 1)
 
 [node name="Bullet" type="RigidBody3D" unique_id=1838850207]
+input_ray_pickable = false
 script = ExtResource("1_cikta")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=908258617]

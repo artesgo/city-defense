@@ -1,8 +1,9 @@
-# Projectile.gd – a simple timed‑lifespan RigidBody3D
-
 extends RigidBody3D
 
+class_name Bullet
+
 ## How many seconds the projectile should live before it disappears.
+@export var projectile_mass : float = 0.01
 @export var duration : float = 5.0
 @export var dmg := 1.0
 @export var deceleration := 0.0
@@ -13,6 +14,7 @@ var _remaining_time := 0.0
 func _ready() -> void:
 	# Initialise the internal timer with whatever the exported value is
 	_remaining_time = duration
+	self.mass = projectile_mass
 
 func _physics_process(delta: float) -> void:
 	# Apply deceleration to current velocity
