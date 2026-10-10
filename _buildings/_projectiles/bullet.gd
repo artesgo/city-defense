@@ -36,4 +36,3 @@ func get_damage() -> float:
 func on_hit() -> void:
 	#play particle effects
 	self.queue_free()
-	return

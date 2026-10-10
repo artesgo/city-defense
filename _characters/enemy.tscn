@@ -23,14 +23,13 @@ script = ExtResource("1_gyitx")
 mesh = SubResource("TorusMesh_lrjkw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=630835476]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_8h5yi")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1741294559]
 script = ExtResource("2_l4fgf")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1084064868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114253104, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_8h5yi")
 
 [node name="Selection" type="MeshInstance3D" parent="Area3D" unique_id=309496997]

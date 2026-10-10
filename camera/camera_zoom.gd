@@ -3,7 +3,6 @@ extends Camera3D
 ##########################
 # --- Public Settings ---
 ##########################
-
 @export var min_height : float = 8.0      # lowest Y the camera can go to
 @export var max_height : float = 64.0     # highest Y the camera can go to
 @export var lerp_speed : float = 8.0      # how fast the camera moves (units per second)

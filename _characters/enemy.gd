@@ -49,11 +49,10 @@ func _attack() -> void:
 	# Here, you can add logic to deal damage or trigger an event
 	# Example: Emit a signal to notify other nodes about the attack
 	emit_signal("enemy_attack", self)
-	
 
 func take_damage(amount : float) -> void:
 	hp -= amount
-	print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
+	#print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
 
 	if hp <= 0:
 		die()
@@ -65,7 +64,6 @@ func die() -> void:
 ##########################
 # --- SIGNAL HANDLERS -- #
 ##########################
-
 func _on_body_entered(body : Node) -> void:
 	# 1️⃣ Quick sanity checks
 	if not body or not body.is_inside_tree():

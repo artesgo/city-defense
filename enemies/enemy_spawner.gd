@@ -5,7 +5,6 @@ class_name EnemySpawner
 ##########################
 # === CONFIGURATION ==== #
 ##########################
-
 @export var spawn_interval : float = 2.0
 	# How often to spawn (seconds).
 
@@ -20,11 +19,9 @@ class_name EnemySpawner
 @export var spawn_on_start : bool = true
 	# If true, the first spawn happens immediately when the game starts.
 
-
 ##########################
 # === INTERNALS ======== #
 ##########################
-
 var _timer : Timer
 var _rng   := RandomNumberGenerator.new()
 
@@ -52,15 +49,12 @@ func _ready() -> void:
 ##########################
 # === CALLBACKS ======== #
 ##########################
-
 func _on_timer_timeout() -> void:
 	spawn_enemy()
-
 
 ##########################
 # === SPAWN LOGIC ====== #
 ##########################
-
 func spawn_enemy() -> void:
 	# Pick a random enemy type
 	var idx = _rng.randi_range(0, enemy_scenes.size() - 1)

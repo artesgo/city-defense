@@ -34,13 +34,13 @@ mesh = SubResource("TorusMesh_8h5yi")
 surface_material_override/0 = SubResource("StandardMaterial3D_ud6ph")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1181179134]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 1.5, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_8h5yi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1219878044]
-transform = Transform3D(8, 0, 0, 0, 2, 0, 0, 0, 8, 0, 3.5, 0)
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0, 3.5, 0)
 mesh = SubResource("PrismMesh_8h5yi")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=864851127]
-transform = Transform3D(7.5, 0, 0, 0, 3, 0, 0, 0, 8, 0, 1, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.5, 0, 1, 0)
 mesh = SubResource("BoxMesh_8h5yi")
