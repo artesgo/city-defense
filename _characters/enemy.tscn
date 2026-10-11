@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bg8pbx51jeq7s" path="res://_characters/enemy.gd" id="1_gyitx"]
 [ext_resource type="Script" uid="uid://b4ggjxmohojfx" path="res://selectable.gd" id="2_l4fgf"]
+[ext_resource type="PackedScene" uid="uid://c3nfgxeurt37k" path="res://_characters/hp_bar.tscn" id="3_0wvpx"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_lrjkw"]
 
@@ -16,13 +17,15 @@ outer_radius = 1.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chewe"]
 albedo_color = Color(0, 0.7591207, 0.5673306, 1)
 
+[sub_resource type="ImageTexture" id="ImageTexture_p73nm"]
+
 [node name="Enemy" type="CharacterBody3D" unique_id=584384264]
 script = ExtResource("1_gyitx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1815294169]
 mesh = SubResource("TorusMesh_lrjkw")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=630835476]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=630835476]
 shape = SubResource("CylinderShape3D_8h5yi")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1741294559]
@@ -37,3 +40,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.031569958, 0)
 visible = false
 mesh = SubResource("TorusMesh_0wvpx")
 surface_material_override/0 = SubResource("StandardMaterial3D_chewe")
+
+[node name="HpBar" parent="." unique_id=713873529 instance=ExtResource("3_0wvpx")]
+billboard = 1
+texture = SubResource("ImageTexture_p73nm")

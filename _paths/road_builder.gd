@@ -8,6 +8,7 @@ class_name RoadBuilder
 @onready var MIDWAY : MeshInstance3D = $Midway
 @onready var END    : MeshInstance3D = $End
 
+var active = true
 signal construct_road(positions : PackedVector3Array)
 
 # ------------------------------------------------------------------
@@ -33,9 +34,9 @@ const BUILDING_LAYER   : int = 1 << 3        # Assuming buildings are on layer 4
 # ------------------------------------------------------------------
 func _ready() -> void:
 	# Hide markers until we get a click.
-	START.visible  = false
+	START.visible  = true
 	MIDWAY.visible = false
-	END.visible    = true   # keep END visible for the preview line
+	END.visible    = false   # keep END visible for the preview line
 
 	# Create the preview mesh once
 	#_preview_line = ImmediateMesh.new()
@@ -55,7 +56,7 @@ func _ready() -> void:
 # Input handling
 # ------------------------------------------------------------------
 func _input(event: InputEvent) -> void:
-	if menu_open:
+	if menu_open or !active:
 		return
 
 	# ----- 1️⃣ Left‑mouse click ------------------------------------
@@ -253,3 +254,5 @@ func _clear_points() -> void:
 	MIDWAY.visible = false
 	END.visible    = false
 	_remove_highlight()
+
+# TODO: block points that are too close together

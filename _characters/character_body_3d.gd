@@ -11,7 +11,8 @@ class_name Navigator
 @onready var forward : RayCast3D = $Rays/Forward
 @onready var left : RayCast3D = $Rays/Left
 @onready var right : RayCast3D = $Rays/Right
-	# will be null if you removed it
+# will be null if you removed it
+
 #signal on_task
 # ────────────────────── Cached Nodes ──────────────────────
 var _target_node : NodePath          # set this in the editor or via code

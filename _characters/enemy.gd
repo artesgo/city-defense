@@ -7,11 +7,16 @@ extends CharacterBody3D
 @export var attack_cooldown := 2.0
 @export var attack := 1
 @export var hp := 20.0
+@export var hp_bar_padding: float = 0.3 # Distance in meters above the character's head
 
 var target: Node3D = null              # Reference to the Command node
 var _cooldown = attack_cooldown
 var _hp : float = 0.0
+
+signal take_dmg_signal
 @onready var hit_area : Area3D = $Area3D                   # Reference to the child Area
+@onready var collision_shape: CollisionShape3D = $CollisionShape3D
+@onready var hp_bar_sprite: HP_BAR = $HpBar
 
 func _ready() -> void:
 	var root = get_tree().current_scene
@@ -21,6 +26,7 @@ func _ready() -> void:
 		push_error("Enemy: No child named 'HitArea' found.")
 		return
 	hit_area.body_entered.connect(_on_body_entered)
+	position_hp_bar()
 
 func _physics_process(delta: float) -> void:
 	if not target:
@@ -52,6 +58,7 @@ func _attack() -> void:
 
 func take_damage(amount : float) -> void:
 	hp -= amount
+	take_dmg_signal.emit(hp)
 	#print_debug("%s took %d dmg, HP left: %d" % [name, amount, hp])
 
 	if hp <= 0:
@@ -76,3 +83,19 @@ func _on_body_entered(body : Node) -> void:
 	# Optional: let the projectile react (e.g., play hit effect)
 	if body.has_method("on_hit"):
 		body.on_hit()
+
+func position_hp_bar() -> void:
+	var height = 0.0
+	# 1. Try to get height from Capsule or Box Collision
+	if collision_shape and collision_shape.shape:
+		if collision_shape.shape is CapsuleShape3D:
+			height = collision_shape.shape.height * collision_shape.scale.y
+		elif collision_shape.shape is BoxShape3D:
+			height = collision_shape.shape.size.y * collision_shape.scale.y
+			
+	# 2. Fallback: If no collision shape, try the Mesh bounding box
+	if height == 0.0 and has_node("MeshInstance3D"):
+		var mesh: MeshInstance3D = $MeshInstance3D
+		height = mesh.get_aabb().size.y * mesh.scale.y
+		
+	hp_bar_sprite.position.y = height + hp_bar_padding

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b32dmp6ra7so2"]
 
 [ext_resource type="PackedScene" uid="uid://d14blovffv8v7" path="res://_ui/ui.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://yr6xo3remfua" path="res://main.gd" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://d0c25edaqw06q" path="res://_paths/road_builder.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cavqfr78xacm4" path="res://camera/camera.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://b4ggjxmohojfx" path="res://selectable.gd" id="4_5vw27"]
@@ -42,6 +43,7 @@ inner_radius = 1.075
 outer_radius = 1.1
 
 [node name="root" type="Node3D" unique_id=1055273545]
+script = ExtResource("1_kek77")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=742904555]
 transform = Transform3D(1, 0, 0, 0, 0.6588623, 0.75226355, 0, -0.75226355, 0.6588623, -9.536743e-07, 8.632524, 7.454804)

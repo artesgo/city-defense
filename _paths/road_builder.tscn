@@ -15,10 +15,13 @@ height = 0.1
 script = ExtResource("2_to7xm")
 
 [node name="Start" type="MeshInstance3D" parent="." unique_id=1500753663]
+visible = false
 mesh = SubResource("CylinderMesh_cikta")
 
 [node name="Midway" type="MeshInstance3D" parent="." unique_id=1565682102]
+visible = false
 mesh = SubResource("CylinderMesh_r2cxm")
 
 [node name="End" type="MeshInstance3D" parent="." unique_id=918577568]
+visible = false
 mesh = SubResource("CylinderMesh_7ttsj")

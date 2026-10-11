@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3nfgxeurt37k"]
+
+[ext_resource type="Script" uid="uid://l2sp0s2w13eh" path="res://_characters/hp_bar.gd" id="1_kkric"]
+
+[node name="HpBar" type="Sprite3D" unique_id=713873529]
+script = ExtResource("1_kkric")
